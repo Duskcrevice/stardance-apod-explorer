@@ -1,0 +1,57 @@
+/* Custom variables for a deep space theme */
+:root {
+    --bg-space: #0b0c14;
+    --card-bg: #161616;
+    --text-primary: #f0f0f0;
+    --text-secondary: #a0a0b0;
+    --accent-glow: #7928ca;
+}
+body {
+    background-color: var(--bg-space);
+    color: var(--text-primary);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin :0;
+    padding: 20px;
+    display: 20px;
+    justify-content: center;
+}
+
+.container {
+    max-width: 800px;
+    width :100%;
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px 0 rgba(121, 40, 202, 0.1);
+}
+h1 {
+    color : #fff;
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+.controls {
+    margin: 20p 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+input[type="date"], button {
+background: #22223b;
+border: 1px solid var(--accent-glow);
+color: white;
+padding: 10px 15px;
+border-radius: 6px;
+cursor: poiner;
+}
+
+button:hover {
+    background: var(--accent-glow);
+}
+
+#media-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius : 8px;
+    margin-top: 15px;
+}
