@@ -9,7 +9,7 @@
 body {
     background-color: var(--bg-space);
     color: var(--text-primary);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin :0;
     padding: 20px;
     display: 20px;
@@ -42,7 +42,7 @@ border: 1px solid var(--accent-glow);
 color: white;
 padding: 10px 15px;
 border-radius: 6px;
-cursor: poiner;
+cursor: pointer;
 }
 
 button:hover {
