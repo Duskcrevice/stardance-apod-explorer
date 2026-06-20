@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Stardance: NASA APOD Explorer</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Explorer</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
+
+    <div class="cosmic-content" style="position: relative; z-index: 1; max-width: 900px; margin: 0 auto; padding: 20px;">
+        
         <header>
             <h1>Cosmic Explorer</h1>
-            <p>Discover the cosmos, one day at a time.</p>
         </header>
 
-            <section class="controls">
-                <label for="date-picker">Choose a date:</label>
+        <section class="controls">
+            <label for="date-picker">Choose a date:</label>
             <input type="date" id="date-picker">
-        <button id="search-btn">Explore</button> <button id="random-btn">Surprise Me</button>
-    </section>
+            <button id="search-btn">Explore</button>
+            <button id="random-btn">Surprise Me</button>
+        </section>
 
-    <main id="apod-content">
-        <h2 id="apod-title">Loading today's universe...</h2>
-    <div id="media-container">
+        <main>
+            <h2 id="apod-title"></h2>
+            <p id="apod-date"></p>
+            <div id="media-container"></div>
+            <p id="apod-explanation"></p>
+        </main>
+
     </div>
-<p id="apod-date"></p>
-<p id="apod-explanation"></p>
-</main>
-</div>
-    
- <script src="app.js"></script>
+
+    <script src="app.js"></script>
 </body>
 </html>
-
 
             

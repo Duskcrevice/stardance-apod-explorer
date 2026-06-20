@@ -48,15 +48,16 @@ function displayData(data) {
         mediaContainer.appendChild(iframe);
     }
 }
-// Function to generate a random valid cosmic date
+// Function to generate a random valid cosmic date (Fixed format strings)
 function getRandomDate() {
-    const start = new Date(1995, 5, 16); 
-    const end = new Date(); 
+    const start = new Date(1995, 5, 16); // June 16, 1995
+    const end = new Date(); // Today
     
     const randomTime = start.getTime() + Math.random() * (end.getTime() - start.getTime());
     const randomDate = new Date(randomTime);
 
     const year = randomDate.getFullYear();
+    // String().padStart(2, '0') forces single digits to look like '05' or '09'
     const month = String(randomDate.getMonth() + 1).padStart(2, '0');
     const day = String(randomDate.getDate()).padStart(2, '0');
 

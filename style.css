@@ -1,57 +1,149 @@
-/* Custom variables for a deep space theme */
-:root {
-    --bg-space: #0b0c14;
-    --card-bg: #161616;
-    --text-primary: #f0f0f0;
-    --text-secondary: #a0a0b0;
-    --accent-glow: #7928ca;
-}
+/* 1. Global Reset & Full Screen Space Background */
 body {
-    background-color: var(--bg-space);
-    color: var(--text-primary);
-    font-family: 'Segoe UI', Tahoma, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin :0;
-    padding: 20px;
-    display: 20px;
-    justify-content: center;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    min-height: 100vh;
+    /* Fixed background stops the space color from stretching or breaking */
+    background: radial-gradient(circle at center, #1b2735 0%, #090a0f 100%) no-repeat fixed;
+    position: relative;
+    overflow-x: hidden;
 }
 
-.container {
-    max-width: 800px;
-    width :100%;
-    background: var(--card-bg);
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 8px 32px 0 rgba(121, 40, 202, 0.1);
-}
-h1 {
-    color : #fff;
-    text-shadow: 0 0 10px var(--accent-glow);
+/* 2. Realistic, Fixed Twinkling Star Layer (No Tiling) */
+body::before {
+    content: "";
+    position: fixed; /* Keeps stars locked to screen view instead of tiling */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: 
+        radial-gradient(rgba(255, 255, 255, 0.8), rgba(255,255,255,0.1) 1px, transparent 30px),
+        radial-gradient(rgba(255, 255, 255, 0.6), rgba(255,255,255,0.05) 1px, transparent 40px);
+    background-size: 400px 400px, 250px 250px;
+    background-position: 0 0, 70px 110px;
+    z-index: -1;
+    animation: twinkle 6s ease-in-out infinite alternate;
 }
 
+@keyframes twinkle {
+    0% { opacity: 0.4; }
+    100% { opacity: 0.9; }
+}
+
+/* 3. Header Text Styling */
+header h1 {
+    text-align: center;
+    color: #61dafb; /* Bright electric cosmic blue */
+    text-shadow: 0 0 15px rgba(97, 218, 251, 0.5);
+    margin-top: 20px;
+    font-size: 2.5rem;
+}
+
+/* 4. Sleek Glass Panels for Controls & Main Data Area */
+.controls, main {
+    background: rgba(20, 24, 33, 0.8); /* Dark background makes white text pop */
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 25px;
+    margin: 20px auto;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+/* 5. Fixing the Control Inputs & Layout */
 .controls {
-    margin: 20p 0;
     display: flex;
-    gap: 10px;
+    justify-content: center;
     align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
 }
 
-input[type="date"], button {
-background: #22223b;
-border: 1px solid var(--accent-glow);
-color: white;
-padding: 10px 15px;
-border-radius: 6px;
-cursor: pointer;
+.controls label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #e0e0e0;
 }
 
-button:hover {
-    background: var(--accent-glow);
+/* 6. Making Input Box & Calendar Text Highly Visible */
+#date-picker {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff; /* Forces calendar date text to be pure white */
+    outline: none;
 }
 
-#media-container img {
-    max-width: 100%;
-    height: auto;
-    border-radius : 8px;
-    margin-top: 15px;
+#date-picker::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Turns dark browser calendar icon white so you can see it */
+    cursor: pointer;
+}
+
+/* 7. Beautiful Space Buttons */
+button {
+    padding: 10px 22px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Explore Button (Blue) */
+#search-btn {
+    background: linear-gradient(135deg, #1e90ff, #00bfff);
+    color: white;
+    box-shadow: 0 4px 15px rgba(30, 144, 255, 0.3);
+}
+
+#search-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(30, 144, 255, 0.5);
+}
+
+/* Surprise Me Button (Purple/Indigo Cosmic Spark) */
+#random-btn {
+    background: linear-gradient(135deg, #8a2be2, #4a00e0);
+    color: white;
+    box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+}
+
+#random-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(138, 43, 226, 0.5);
+}
+
+/* 8. Media Outputs Styling (Image & Text area) */
+#apod-title {
+    color: #ffffff;
+    font-size: 1.8rem;
+    margin-top: 0;
+}
+
+#apod-date {
+    color: #8892b0;
+    font-style: italic;
+    margin-bottom: 15px;
+}
+
+#media-container img, #media-container iframe {
+    width: 100%;
+    max-height: 550px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin: 15px 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+#apod-explanation {
+    line-height: 1.6;
+    color: #cdd6f4;
+    font-size: 1.05rem;
 }
